@@ -1,0 +1,66 @@
+name "Orb Automation"
+
+every 20 ticks do
+
+  -- Energized Steel
+  if chest has 1 iron_ingot and chest has 1 gold_ingot then
+    input 1 iron_ingot, 1 gold_ingot from chest
+    output retain 1 iron_ingot, 1 gold_ingot to orb
+
+  -- Charged Crystal
+  else if chest has 6 certus_quartz_crystal then
+    input 6 certus_quartz_crystal from chest
+    output retain 6 certus_quartz_crystal to orb
+
+  -- Ender Core
+  else if chest has 1 ender_eye and 1 dielectric_casing and 1 capacitator_basic_tiny then
+    input 1 ender_eye, 1 dielectric_casing, 1 capacitator_basic_tiny from chest
+    output retain 1 ender_eye, 1 dielectric_casing, 1 capacitator_basic_tiny to orb
+
+  -- Blazing Crystal
+  else if chest has 1 blaze_rod and orb has =0 then
+    input 1 blaze_rod from chest
+    output retain 1 blaze_rod to orb
+
+  else if chest has 4 blaze_powder and orb has =0 then
+    input 4 blaze_powder from chest
+    output retain 4 blaze_powder to orb
+
+  -- Niotic Crystal
+  else if chest has 1 diamond and orb has =0 then
+    input 1 diamond from chest
+    output retain 1 diamond to orb
+
+  --  Spirited Crystal
+  else if chest has 1 emerald and orb has =0 then
+    input 1 emerald from chest
+    output retain 1 emerald to orb
+
+  -- Nitro Crystal
+  else if chest has 1 nether_star and chest has 2 redstone_block
+       and chest has 1 powah:blazing_crystal_block and orb has =0 then
+    input 1 nether_star, 2 redstone_block, 1 powah:blazing_crystal_block from chest
+    output retain all to orb
+
+  end
+
+  --  Output Logic
+  if orb has 1 *energized* or orb has 1 *crystal* then
+    input all from orb
+    output to chest
+  end
+
+end
+
+
+
+Server starten op laptop:
+bun src/server.ts
+static observedAttributes = ['title',"date","location","type","price"];
+attributeChangedCallback(name: string, _oldValue: string, newValue: string) {}
+
+
+
+
+
+
